@@ -1,14 +1,16 @@
 import 'regenerator-runtime/runtime';
 import React, { useState, useEffect } from 'react';
-import Form from './components/Form';
 import SignIn from './components/SignIn';
 import Posts from './components/Posts';
 
 const App = ({ isSignedIn, rep, wallet }) => {
   const [posts, setPosts] = useState([]);
-
+  const method = "get_posts";
+  const from_index = 0;          
+  const limit = 250;   
+  
   useEffect(() => {
-    rep.getPosts().then(setPosts);
+    rep.getPosts({ method, from_index, limit }).then(setPosts);
   }, []);
 
   const signIn = () => { wallet.signIn() }
@@ -29,7 +31,7 @@ const App = ({ isSignedIn, rep, wallet }) => {
 
       <hr />
       { isSignedIn
-        ? <Form onSubmit={onSubmit} currentAccountId={wallet.accountId} />
+        ? <p>HIHIHI</p>
         : <SignIn/>
       }
 

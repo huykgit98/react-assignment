@@ -1,3 +1,0 @@
-DEFINE_NEAR_METHOD(add_message)
-DEFINE_NEAR_METHOD(get_messages)
-DEFINE_NEAR_METHOD(total_messages)

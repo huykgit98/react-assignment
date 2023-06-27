@@ -12,14 +12,14 @@ import { Wallet } from './near-wallet';
 const wallet = new Wallet({ createAccessKeyFor: process.env.CONTRACT_NAME })
 
 // Abstract the logic of interacting with the contract to simplify your flow
-const guestBook = new GuestBook({ contractId: process.env.CONTRACT_NAME, walletToUse: wallet });
+const rep = new Rep({ contractId: process.env.CONTRACT_NAME, walletToUse: wallet });
 
 // Setup on page load
 window.onload = async () => {
   const isSignedIn = await wallet.startUp()
  
   ReactDOM.render(
-    <App isSignedIn={isSignedIn} guestBook={guestBook} wallet={wallet} />,
+    <App isSignedIn={isSignedIn} rep={rep} wallet={wallet} />,
     document.getElementById('root')
   );
 }

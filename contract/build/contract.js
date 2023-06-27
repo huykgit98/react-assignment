@@ -1,27 +1,3 @@
-function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-  var desc = {};
-  Object.keys(descriptor).forEach(function (key) {
-    desc[key] = descriptor[key];
-  });
-  desc.enumerable = !!desc.enumerable;
-  desc.configurable = !!desc.configurable;
-  if ('value' in desc || desc.initializer) {
-    desc.writable = true;
-  }
-  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-    return decorator(target, property, desc) || desc;
-  }, desc);
-  if (context && desc.initializer !== void 0) {
-    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-    desc.initializer = undefined;
-  }
-  if (desc.initializer === void 0) {
-    Object.defineProperty(target, property, desc);
-    desc = null;
-  }
-  return desc;
-}
-
 // make PromiseIndex a nominal typing
 var PromiseIndexBrand;
 (function (PromiseIndexBrand) {
@@ -475,28 +451,6 @@ var PromiseError;
 const U64_MAX = 2n ** 64n - 1n;
 const EVICTED_REGISTER = U64_MAX - 1n;
 /**
- * Returns the account ID of the account that called the function.
- * Can only be called in a call or initialize function.
- */
-function predecessorAccountId() {
-  env.predecessor_account_id(0);
-  return str(env.read_register(0));
-}
-/**
- * Returns the account ID of the current contract - the contract that is being executed.
- */
-function currentAccountId() {
-  env.current_account_id(0);
-  return str(env.read_register(0));
-}
-/**
- * Returns the amount of NEAR attached to this function call.
- * Can only be called in payable functions.
- */
-function attachedDeposit() {
-  return env.attached_deposit();
-}
-/**
  * Reads the value from NEAR storage that is stored under the provided key.
  *
  * @param key - The key to read from storage.
@@ -737,37 +691,6 @@ class VectorIterator {
   }
 }
 
-/**
- * Tells the SDK to expose this function as a view function.
- *
- * @param _empty - An empty object.
- */
-function view(_empty) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return function (_target, _key, _descriptor
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  ) {};
-}
-function call({
-  privateFunction = false,
-  payableFunction = false
-}) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return function (_target, _key, descriptor) {
-    const originalMethod = descriptor.value;
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    descriptor.value = function (...args) {
-      if (privateFunction && predecessorAccountId() !== currentAccountId()) {
-        throw new Error("Function is private");
-      }
-      if (!payableFunction && attachedDeposit() > 0n) {
-        throw new Error("Function is not payable");
-      }
-      return originalMethod.apply(this, args);
-    };
-  };
-}
 function NearBindgen({
   requireInit = false,
   serializer = serialize,
@@ -812,78 +735,14 @@ function NearBindgen({
   };
 }
 
-const POINT_ONE = '100000000000000000000000';
+var _dec, _class;
+(_dec = NearBindgen({}), _dec(_class = class Rep {
+  posts = new Vector("v-uid");
 
-var _dec, _dec2, _dec3, _dec4, _class, _class2;
-let GuestBook = (_dec = NearBindgen({}), _dec2 = call({
-  payableFunction: true
-}), _dec3 = view(), _dec4 = view(), _dec(_class = (_class2 = class GuestBook {
-  messages = new Vector("v-uid");
-  // Public - Adds a new message.
-  add_message({
-    text
-  }) {
-    // If the user attaches more than 0.1N the message is premium
-    const premium = attachedDeposit() >= BigInt(POINT_ONE);
-    const sender = predecessorAccountId();
-    const message = {
-      premium,
-      sender,
-      text
-    };
-    this.messages.push(message);
-  }
-  // Returns an array of messages.
-  get_messages({
-    from_index = 0,
-    limit = 10
-  }) {
-    return this.messages.toArray().slice(from_index, from_index + limit);
-  }
-  total_messages() {
-    return this.messages.length;
-  }
-}, (_applyDecoratedDescriptor(_class2.prototype, "add_message", [_dec2], Object.getOwnPropertyDescriptor(_class2.prototype, "add_message"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "get_messages", [_dec3], Object.getOwnPropertyDescriptor(_class2.prototype, "get_messages"), _class2.prototype), _applyDecoratedDescriptor(_class2.prototype, "total_messages", [_dec4], Object.getOwnPropertyDescriptor(_class2.prototype, "total_messages"), _class2.prototype)), _class2)) || _class);
-function total_messages() {
-  const _state = GuestBook._getState();
-  if (!_state && GuestBook._requireInit()) {
-    throw new Error("Contract must be initialized");
-  }
-  const _contract = GuestBook._create();
-  if (_state) {
-    GuestBook._reconstruct(_contract, _state);
-  }
-  const _args = GuestBook._getArgs();
-  const _result = _contract.total_messages(_args);
-  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(GuestBook._serialize(_result, true));
-}
-function get_messages() {
-  const _state = GuestBook._getState();
-  if (!_state && GuestBook._requireInit()) {
-    throw new Error("Contract must be initialized");
-  }
-  const _contract = GuestBook._create();
-  if (_state) {
-    GuestBook._reconstruct(_contract, _state);
-  }
-  const _args = GuestBook._getArgs();
-  const _result = _contract.get_messages(_args);
-  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(GuestBook._serialize(_result, true));
-}
-function add_message() {
-  const _state = GuestBook._getState();
-  if (!_state && GuestBook._requireInit()) {
-    throw new Error("Contract must be initialized");
-  }
-  const _contract = GuestBook._create();
-  if (_state) {
-    GuestBook._reconstruct(_contract, _state);
-  }
-  const _args = GuestBook._getArgs();
-  const _result = _contract.add_message(_args);
-  GuestBook._saveToStorage(_contract);
-  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(GuestBook._serialize(_result, true));
-}
-
-export { add_message, get_messages, total_messages };
+  // @view({})
+  // // Returns an array of posts.
+  // get_posts({ from_index = 0, limit = 10 }: { from_index: number, limit: number }): Post[] {
+  //   return this.posts.toArray().slice(from_index, from_index + limit);
+  // }
+}) || _class);
 //# sourceMappingURL=contract.js.map
