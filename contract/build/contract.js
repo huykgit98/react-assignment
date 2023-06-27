@@ -1,3 +1,27 @@
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+  var desc = {};
+  Object.keys(descriptor).forEach(function (key) {
+    desc[key] = descriptor[key];
+  });
+  desc.enumerable = !!desc.enumerable;
+  desc.configurable = !!desc.configurable;
+  if ('value' in desc || desc.initializer) {
+    desc.writable = true;
+  }
+  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+    return decorator(target, property, desc) || desc;
+  }, desc);
+  if (context && desc.initializer !== void 0) {
+    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+    desc.initializer = undefined;
+  }
+  if (desc.initializer === void 0) {
+    Object.defineProperty(target, property, desc);
+    desc = null;
+  }
+  return desc;
+}
+
 // make PromiseIndex a nominal typing
 var PromiseIndexBrand;
 (function (PromiseIndexBrand) {
@@ -691,6 +715,17 @@ class VectorIterator {
   }
 }
 
+/**
+ * Tells the SDK to expose this function as a view function.
+ *
+ * @param _empty - An empty object.
+ */
+function view(_empty) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return function (_target, _key, _descriptor
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  ) {};
+}
 function NearBindgen({
   requireInit = false,
   serializer = serialize,
@@ -735,14 +770,30 @@ function NearBindgen({
   };
 }
 
-var _dec, _class;
-(_dec = NearBindgen({}), _dec(_class = class Rep {
+var _dec, _dec2, _class, _class2;
+let Rep = (_dec = NearBindgen({}), _dec2 = view(), _dec(_class = (_class2 = class Rep {
   posts = new Vector("v-uid");
+  // Returns an array of posts.
+  get_posts({
+    from_index = 0,
+    limit = 10
+  }) {
+    return this.posts.toArray().slice(from_index, from_index + limit);
+  }
+}, (_applyDecoratedDescriptor(_class2.prototype, "get_posts", [_dec2], Object.getOwnPropertyDescriptor(_class2.prototype, "get_posts"), _class2.prototype)), _class2)) || _class);
+function get_posts() {
+  const _state = Rep._getState();
+  if (!_state && Rep._requireInit()) {
+    throw new Error("Contract must be initialized");
+  }
+  const _contract = Rep._create();
+  if (_state) {
+    Rep._reconstruct(_contract, _state);
+  }
+  const _args = Rep._getArgs();
+  const _result = _contract.get_posts(_args);
+  if (_result !== undefined) if (_result && _result.constructor && _result.constructor.name === "NearPromise") _result.onReturn();else env.value_return(Rep._serialize(_result, true));
+}
 
-  // @view({})
-  // // Returns an array of posts.
-  // get_posts({ from_index = 0, limit = 10 }: { from_index: number, limit: number }): Post[] {
-  //   return this.posts.toArray().slice(from_index, from_index + limit);
-  // }
-}) || _class);
+export { get_posts };
 //# sourceMappingURL=contract.js.map
