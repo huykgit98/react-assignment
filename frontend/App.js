@@ -1,7 +1,8 @@
 import 'regenerator-runtime/runtime';
 import React, { useState, useEffect } from 'react';
-import SignIn from './components/SignIn';
-import Posts from './components/Posts';
+import SignIn from './pages/SignIn';
+import Home from "./pages/Home";
+import Layout from "./components/Layout";
 
 const App = ({ isSignedIn, rep, wallet }) => {
   const [posts, setPosts] = useState([]);
@@ -12,33 +13,16 @@ const App = ({ isSignedIn, rep, wallet }) => {
   useEffect(() => {
     rep.getPosts({ method, from_index, limit }).then(setPosts);
   }, []);
-
-  const signIn = () => { wallet.signIn() }
-
-  const signOut = () => { wallet.signOut() }
-
+  
   return (
     <main>
-      <table>
-        <tr>
-          <td><h1>📖 Rep social network</h1></td>
-          <td>{ isSignedIn
-          ? <button onClick={signOut}>Log out</button>
-          : <button onClick={signIn}>Log in</button>
-        }</td>
-        </tr>
-      </table>
-
-      <hr />
       { isSignedIn
-        ? <p>HIHIHI</p>
-        : <SignIn/>
+        ? 
+        <Layout wallet={wallet}>
+         <Home posts = {posts} />
+      </Layout>
+        : <SignIn  wallet={wallet}/>
       }
-
-      <hr />
-
-      { !!posts.length && <Posts posts={posts}/> }
-
     </main>
   );
 };
