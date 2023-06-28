@@ -18,7 +18,7 @@ export default function Layout({ children , wallet}) {
       }}
     >
       <StickyHeader wallet={wallet}/>
-      <Grid container spacing={5}>
+      <Grid container spacing={2}>
         <Grid item xs={1} lg={2}>
           <LeftSidebar />
         </Grid>

@@ -28,7 +28,7 @@ export default function LeftSidebar() {
       <Box sx={{ height: "100vh", maxWidth: "100%" }}>
         <Box textAlign="center">
          
-            <img src="/logo.png" alt="logo" width="50px" />
+            <img src="/static/images/avatar/2.jpg" alt="logo" width="50px" />
         </Box>
         <List>
       

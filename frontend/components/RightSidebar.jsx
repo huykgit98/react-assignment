@@ -37,7 +37,6 @@ export default function RightSidebar() {
               />
             }
           />
-          { (
             <Box
               width="100%"
               sx={{
@@ -53,7 +52,9 @@ export default function RightSidebar() {
             >
           
                 <Box>
-                
+                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                    Who to follow
+                  </Typography>
                     <Grid
                       sx={{
                         overflow: "hidden",
@@ -98,7 +99,6 @@ export default function RightSidebar() {
                 </Box>
               
             </Box>
-          )}
         </Box>
         <Box
           sx={{
@@ -108,9 +108,6 @@ export default function RightSidebar() {
             margin: "1rem 0",
           }}
         >
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-            Who to follow
-          </Typography>
           <WhoToFollow/>
         </Box>
       </Box>

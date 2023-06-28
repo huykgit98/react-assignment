@@ -22,7 +22,7 @@ export default function StickyHeader ({wallet}) {
   };
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: "transparent" }}>
+    <AppBar position="sticky" sx={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}>
       <Toolbar>
       <img src="https://rep.run/_next/static/media/RepIcon.41878db9.svg" alt="App Icon" style={{ marginRight: '0.5rem', height: '24px' }} />
       <Typography variant="h6" sx={{ flexGrow: 1, color: "#A6A6AA" }}>
