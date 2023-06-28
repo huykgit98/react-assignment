@@ -6,6 +6,7 @@ import AddPost from "../components/AddPost";
 export default function Home({ posts}) {
 
   return (
+    <Box paddingTop="10px">
 
 <Box
     sx={{
@@ -14,14 +15,28 @@ export default function Home({ posts}) {
         '&::-webkit-scrollbar': { display: 'none' },
         msOverflowStyle: 'none',
         scrollbarWidth: 'none',
+        backgroundColor: "#1A202C", borderRadius: '16px'
     }}
->
 
-        <AddPost />
+>       
+<Box
+          sx={{
+            background: "#1A202C",
+            borderRadius: "28px",
+            padding: "10px 20px",
+            margin: "1rem 0",
+          }}
+        >
+                  <AddPost />
+
+        </Box>
+
         {
         !!posts.length && posts.map((post) => <Post key={post.id} post={post} />)
           }
     </Box>
+    </Box>
+
   );
 }
 

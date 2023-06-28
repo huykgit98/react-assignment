@@ -18,75 +18,73 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import LogoutIcon from "@mui/icons-material/Logout";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import CustomizedSwitch from "../components/CustomSwitch";
 
 
 export default function LeftSidebar() {
   const theme = useTheme();
 
   return (
-    <>
-      <Box sx={{ height: "100vh", maxWidth: "100%" }}>
-        <Box textAlign="center">
-         
-            <img src="/static/images/avatar/2.jpg" alt="logo" width="50px" />
-        </Box>
+          <Box paddingTop="10px">
+
+      <Box sx={{ height: "60vh", maxWidth: "100%", backgroundColor: "#1A202C", borderRadius: '16px'}}>
         <List>
       
             <ListItem
-              button
+              ButtonBase
               sx={{
                 borderRadius: "28px",
                 margin: ".5rem 0",
               }}
             >
               <ListItemIcon>
-                <HomeIcon fontSize="medium" color="action" />
+                <HomeIcon fontSize="medium" style={{ color: "#A6A6AA" }}/>
               </ListItemIcon>
               <Hidden lgDown>
                 <ListItemText
                   primaryTypographyProps={{
                     fontSize: "18px",
-                    color: theme.palette.action.active,
+                    color: "#A6A6AA",
                   }}
                   primary="Home"
                 />
               </Hidden>
             </ListItem>
           <ListItem
-            button
+            ButtonBase
             sx={{
               borderRadius: "28px",
               margin: ".5rem 0",
             }}
           >
             <ListItemIcon>
-              <BookmarkIcon fontSize="medium" color="action" />
+              <BookmarkIcon fontSize="medium" style={{ color: "#A6A6AA" }} />
             </ListItemIcon>
             <Hidden lgDown>
               <ListItemText
                 primaryTypographyProps={{
                   fontSize: "18px",
-                  color: theme.palette.action.active,
+                  color: "#A6A6AA",
                 }}
                 primary="Blog"
               />
             </Hidden>
           </ListItem>
           <ListItem
-            button
+            ButtonBase
             sx={{
               borderRadius: "28px",
               margin: ".5rem 0",
             }}
           >
             <ListItemIcon>
-              <PersonOutlineIcon fontSize="medium" color="action" />
+              <PersonOutlineIcon fontSize="medium" style={{ color: "#A6A6AA" }}  />
             </ListItemIcon>
             <Hidden lgDown>
               <ListItemText
                 primaryTypographyProps={{
                   fontSize: "18px",
-                  color: theme.palette.action.active,
+                  color: "#A6A6AA",
                 }}
                 primary="Notifications"
               />
@@ -94,97 +92,96 @@ export default function LeftSidebar() {
           </ListItem>
           
             <ListItem
-              button
+              ButtonBase
               sx={{
                 borderRadius: "28px",
                 margin: ".5rem 0",
               }}
             >
               <ListItemIcon>
-                <PersonOutlineIcon fontSize="medium" color="action" />
+                <PersonOutlineIcon fontSize="medium" style={{ color: "#A6A6AA" }}  />
               </ListItemIcon>
               <Hidden lgDown>
                 <ListItemText
                   primaryTypographyProps={{
                     fontSize: "18px",
-                    color: theme.palette.action.active,
+                    color: "#A6A6AA",
                   }}
                   primary="Messages"
                 />
               </Hidden>
             </ListItem>
             <ListItem
-              button
+              ButtonBase
               sx={{
                 borderRadius: "28px",
                 margin: ".5rem 0",
               }}
             >
               <ListItemIcon>
-                <PersonOutlineIcon fontSize="medium" color="action" />
+                <PersonOutlineIcon fontSize="medium" style={{ color: "#A6A6AA" }}  />
               </ListItemIcon>
               <Hidden lgDown>
                 <ListItemText
                   primaryTypographyProps={{
                     fontSize: "18px",
-                    color: theme.palette.action.active,
+                    color: "#A6A6AA",
                   }}
                   primary="Bookmarks"
                 />
               </Hidden>
             </ListItem>
             <ListItem
-              button
+              ButtonBase
               sx={{
                 borderRadius: "28px",
                 margin: ".5rem 0",
               }}
             >
               <ListItemIcon>
-                <PersonOutlineIcon fontSize="medium" color="action" />
+                <PersonOutlineIcon fontSize="medium" style={{ color: "#A6A6AA" }}  />
               </ListItemIcon>
               <Hidden lgDown>
                 <ListItemText
                   primaryTypographyProps={{
                     fontSize: "18px",
-                    color: theme.palette.action.active,
+                    color: "#A6A6AA",
                   }}
                   primary="Profile"
                 />
               </Hidden>
             </ListItem>
         </List>
+        <Box
+        sx={{
+          maxWidth: "100%",
+          backgroundColor: "#1A202C",
+          borderRadius: "16px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <Hidden lgDown>
           <Button
             onClick={() => {}}
             variant="contained"
-            color="primary"
-            fullWidth
             style={{
-              borderRadius: "28px",
-              padding: "10px",
+              borderRadius: "15px",
+              padding: "6px 16px",
               textTransform: "capitalize",
+              width: "60%",
             }}
           >
             Say
           </Button>
         </Hidden>
-        <Hidden lgUp>
-          <IconButton
-            onClick={() => {}}
-            variant="contained"
-            color="primary"
-            style={{
-              borderRadius: "28px",
-              padding: "0 15px",
-              textTransform: "capitalize",
-              textAlign: "center",
-            }}
-          >
-            <AddCircleOutlineIcon />
-          </IconButton>
+        <Hidden lgDown>
+          <CustomizedSwitch />
         </Hidden>
       </Box>
-    </>
+      </Box>
+      </Box>
   );
 }

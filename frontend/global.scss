@@ -3,7 +3,7 @@
 }
 
 html {
-  --bg: linear-gradient(to right, black, #822601, purple, black);
+  --bg: linear-gradient(to right, black,black, #822601, black, purple,black, black);
   --fg: #25282A;
   --gray: #888;
   --royal: #0072CE;
@@ -11,7 +11,8 @@ html {
   --primary: #93b0df;
   --secondary: var(--royal);
   --tertiary: #FF585D;
-
+  
+  
   background-image: var(--bg);
   color: var(--fg);
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
@@ -38,7 +39,7 @@ html {
 body {
   margin: 0 auto;
   padding: 0 1em;
-  max-width: 40em;
+  max-width: 60em;
 }
 
 fieldset {

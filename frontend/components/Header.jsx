@@ -22,15 +22,19 @@ export default function StickyHeader ({wallet}) {
   };
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}>
+    <AppBar position="static" sx={{ backgroundColor: "rgba(0, 0, 0, 0.8)" }}>
       <Toolbar>
-      <img src="https://rep.run/_next/static/media/RepIcon.41878db9.svg" alt="App Icon" style={{ marginRight: '0.5rem', height: '24px' }} />
+      <img src="https://rep.run/_next/static/media/RepIcon.41878db9.svg" alt="App Icon" style={{ marginRight: '0.5rem', height: '48px' }} />
       <Typography variant="h6" sx={{ flexGrow: 1, color: "#A6A6AA" }}>
           Rep
         </Typography>
-        <Button color="inherit">Trending</Button>
-        <Button color="inherit">New</Button>
-        <Button color="inherit">Hot</Button>
+        
+        <Button color="inherit" sx={{ fontSize: "12px" }}>
+          Trending</Button>
+    <Button color="inherit" sx={{ fontSize: "12px" }}>
+    New</Button>
+    <Button color="inherit" sx={{ fontSize: "12px" }}>
+      Hot</Button>
         <IconButton color="inherit">
           <ChatIcon />
         </IconButton>

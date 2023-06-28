@@ -8,14 +8,15 @@ export default function RightSidebar() {
 
   return (
     <Box sx={{ height: "100%" }}>
+
       <Box paddingTop="10px">
         <Box
           width="100%"
-          borderRadius="28px"
-          border="1px solid #eee"
+          borderRadius="15px"
           position="relative"
+        
           sx={{
-            background: "#eee",
+            background: "#1A202C",
           }}
         >
           <Input
@@ -23,93 +24,37 @@ export default function RightSidebar() {
             onChange={(e) => {}}
             type="text"
             inputProps={{
-              style: { padding: "10px" },
+              style: { padding: "10px", fontSize:"12px",  color: "#A6A6AA"},
             }}
             disableUnderline
             fullWidth
-            placeholder="Search"
+            placeholder="Search Rep"
             startAdornment={
               <Search
                 sx={{
                   paddingLeft: "20px",
-                  color: "#777",
+                  color: "#A6A6AA",
+                  fontSize: 50,
                 }}
               />
             }
           />
-            <Box
-              width="100%"
-              sx={{
-                backgroundColor: "white",
-                border: "1px solid #eee",
-                borderRadius: "28px",
-                padding: "1rem 0",
-                zIndex: "999",
-                maxHeight: "50vh",
-                overflowY: "scroll",
-              }}
-              position="absolute"
-            >
-          
-                <Box>
-                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                    Who to follow
-                  </Typography>
-                    <Grid
-                      sx={{
-                        overflow: "hidden",
-                        padding: ".2rem 1rem",
-                        "&:hover": {
-                          backgroundColor: "#eee",
-                        },
-                      }}
-                      container
-                      alignItems="center"
-                    >
-                      <Grid item sx={{ paddingRight: "12px" }}>
-                        <img src="/logo.png" width="50px" alt="logo" />
-                      </Grid>
-                      <Grid item>
-                        <Grid container alignItems="center">
-                          <Grid item>
-                            <Typography
-                              sx={{
-                                fontSize: "16px",
-                                fontWeight: "500",
-                                color: "#000",
-                              }}
-                            >
-                              user name 
-                            </Typography>
-                            <Box display="flex" alignItems="center">
-                              <Typography
-                                sx={{
-                                  fontSize: "14px",
-                                  mr: "6px",
-                                  color: "#555",
-                                }}
-                              >
-                                @ahuhu
-                              </Typography>
-                            </Box>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                </Box>
-              
-            </Box>
+           
         </Box>
         <Box
           sx={{
-            background: "#eee",
+            background: "#1A202C",
             borderRadius: "28px",
             padding: "10px 20px",
             margin: "1rem 0",
           }}
         >
+          <Typography variant="h6" sx={{ fontWeight: "bold" , color: "#A6A6AA"}}>
+            Who to follow
+          </Typography>
           <WhoToFollow/>
         </Box>
+        
       </Box>
     </Box>
   );

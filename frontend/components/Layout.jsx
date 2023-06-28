@@ -11,39 +11,55 @@ export default function Layout({ children , wallet}) {
   const theme = useTheme();
 
   return (
-    <Box
-      sx={{
-        maxWidth: theme.breakpoints.values.lg,
-        margin: "0 auto",
-      }}
-    >
+    <>    
       <StickyHeader wallet={wallet}/>
-      <Grid container spacing={2}>
-        <Grid item xs={1} lg={2}>
-          <LeftSidebar />
+      <Grid container spacing={3}>
+        <Grid item xs>
+        <LeftSidebar />
         </Grid>
-        <Grid item xs={11} lg={10}>
-          <Grid container>
-            <Grid item xs={12} lg={8}>
-              <Box
-                sx={{
-                  height: "100vh",
-                  margin: "0 1rem",
-                  borderLeft: "1px solid #ccc",
-                  borderRight: "1px solid #ccc",
-                }}
-              >
-                {children}
-              </Box>
-            </Grid>
-            <Hidden lgDown>
-              <Grid item lg={4} sx={{ height: "100vh" }}>
-                <RightSidebar />
-              </Grid>
-            </Hidden>
-          </Grid>
+        <Grid item xs={6}>
+        {children}
+
         </Grid>
-      </Grid>
-    </Box>
+        <Grid item xs>
+        <RightSidebar />
+        </Grid>
+      </Grid>    
+  </>
+
+    // <Box
+    //   sx={{
+    //     maxWidth: theme.breakpoints.values.lg,
+    //     margin: "0 auto",
+    //   }}
+    // >
+    //   <StickyHeader wallet={wallet}/>
+    //   <Grid container spacing={2}>
+    //     <Grid item xs={1} lg={2}>
+    //       <LeftSidebar />
+    //     </Grid>
+    //     <Grid item xs={11} lg={10}>
+    //       <Grid container>
+    //         <Grid item xs={12} lg={8}>
+    //           <Box
+    //             sx={{
+    //               height: "100vh",
+    //               margin: "0 1rem",
+    //               borderLeft: "1px solid #ccc",
+    //               borderRight: "1px solid #ccc",
+    //             }}
+    //           >
+    //             {children}
+    //           </Box>
+    //         </Grid>
+    //         <Hidden lgDown>
+    //           <Grid item lg={4} sx={{ height: "100vh" }}>
+    //             <RightSidebar />
+    //           </Grid>
+    //         </Hidden>
+    //       </Grid>
+    //     </Grid>
+    //   </Grid>
+    // </Box>
   );
 }
