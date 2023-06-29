@@ -15,16 +15,15 @@ export default function Home({ posts}) {
         '&::-webkit-scrollbar': { display: 'none' },
         msOverflowStyle: 'none',
         scrollbarWidth: 'none',
-        backgroundColor: "#1A202C", borderRadius: '16px'
+         borderRadius: '16px'
     }}
 
 >       
 <Box
           sx={{
             background: "#1A202C",
-            borderRadius: "28px",
+            borderRadius: "15px",
             padding: "10px 20px",
-            margin: "1rem 0",
           }}
         >
                   <AddPost />

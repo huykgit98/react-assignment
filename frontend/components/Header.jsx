@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Menu, MenuItem, Button, Avatar, Box, Tooltip } from '@mui/material';
+import { AppBar, Grid, Toolbar, IconButton, Typography, Menu, MenuItem, Button, Avatar, Box, Tooltip } from '@mui/material';
 import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
@@ -41,7 +41,22 @@ export default function StickyHeader ({wallet}) {
         <IconButton color="inherit">
           <NotificationsIcon />
         </IconButton>
+        <Grid >
+              <Grid item>
+                <Typography sx={{ fontSize: "16px", fontWeight: "500", color: "#A6A6AA" }}>
+                  user name
+                </Typography>
+                <Box >
+                  <Typography
+                    sx={{ fontSize: "14px", mr: "6px", color: "#555" }}
+                  >
+                    @hello
+                  </Typography>
+                </Box>
+              </Grid>
+            </Grid>
         <Box sx={{ flexGrow: 0 }}>
+        
             <Tooltip title="">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />

@@ -5,12 +5,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+
 import {
   Button,
   Grid,
   Hidden,
   IconButton,
-  Input,
+    Input,
   useTheme,
 } from "@mui/material";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
@@ -99,7 +101,7 @@ export default function LeftSidebar() {
               }}
             >
               <ListItemIcon>
-                <PersonOutlineIcon fontSize="medium" style={{ color: "#A6A6AA" }}  />
+                <ChatBubbleOutlineIcon fontSize="medium" style={{ color: "#A6A6AA" }}  />
               </ListItemIcon>
               <Hidden lgDown>
                 <ListItemText
@@ -172,6 +174,8 @@ export default function LeftSidebar() {
               padding: "6px 16px",
               textTransform: "capitalize",
               width: "60%",
+              background: "linear-gradient(to right, #8c1aff, #6600cc, #3333cc)",
+
             }}
           >
             Say
