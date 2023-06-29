@@ -7,25 +7,24 @@ import { Grid, Hidden } from "@mui/material";
 import { useTheme } from "@mui/system";
 import { useDispatch } from "react-redux";
 
-export default function Layout({ children , wallet}) {
+export default function Layout({ children, wallet }) {
   const theme = useTheme();
 
   return (
-    <>    
-      <StickyHeader wallet={wallet}/>
+    <>
+      <StickyHeader wallet={wallet} />
       <Grid container spacing={3}>
         <Grid item xs>
-        <LeftSidebar />
+          <LeftSidebar />
         </Grid>
         <Grid item xs={6}>
-        {children}
-
+          {children}
         </Grid>
         <Grid item xs>
-        <RightSidebar />
+          <RightSidebar />
         </Grid>
-      </Grid>    
-  </>
+      </Grid>
+    </>
 
     // <Box
     //   sx={{

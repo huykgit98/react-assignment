@@ -14,14 +14,12 @@ import SyncIcon from "@mui/icons-material/Sync";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import IosShareIcon from "@mui/icons-material/IosShare";
 import { Box } from "@mui/system";
-import MediaComponent from './MediaComponent';
+import MediaComponent from "./MediaComponent";
 
-
-export default function Post({ post}) {
+export default function Post({ post }) {
   return (
     <>
-        <Box paddingTop="10px">
-
+      <Box paddingTop="10px">
         <Box
           padding="1rem"
           sx={{
@@ -44,11 +42,15 @@ export default function Post({ post}) {
                   flexWrap="nowrap"
                 >
                   <Grid item>
-                   <Box display="flex" justifyContent="space-between">
-                    <Box display="flex">
-
+                    <Box display="flex" justifyContent="space-between">
+                      <Box display="flex">
                         <Typography
-                          sx={{ fontSize: "16px", fontWeight: 500, mr: "6px" ,color: "#555"}}
+                          sx={{
+                            fontSize: "16px",
+                            fontWeight: 500,
+                            mr: "6px",
+                            color: "#555",
+                          }}
                         >
                           {post.account_id}
                         </Typography>
@@ -57,17 +59,15 @@ export default function Post({ post}) {
                         >
                           @{post.account_id}
                         </Typography>
-                    
-                        </Box>
+                      </Box>
                       <Box display="flex">
-
                         <Typography
                           sx={{ fontSize: "15px", mr: "6px", color: "#555" }}
                         >
                           2 hours ago
                         </Typography>
                         <MoreHorizIcon />
-                      </Box>  
+                      </Box>
                     </Box>
                     <Box>
                       <Typography sx={{ fontSize: "15px", color: "white" }}>
@@ -75,10 +75,12 @@ export default function Post({ post}) {
                       </Typography>
                     </Box>
                     <Box>
-                      <MediaComponent type={post.post_type.type} url={post.post_type.url} />
+                      <MediaComponent
+                        type={post.post_type.type}
+                        url={post.post_type.url}
+                      />
                     </Box>
                   </Grid>
-               
                 </Grid>
                 <Box
                   display="flex"
@@ -92,24 +94,32 @@ export default function Post({ post}) {
                     }}
                     size="small"
                   >
-                    <ChatBubbleOutlineIcon fontSize="small" style={{ color: "#A6A6AA" }}/>
+                    <ChatBubbleOutlineIcon
+                      fontSize="small"
+                      style={{ color: "#A6A6AA" }}
+                    />
                   </IconButton>
                   <IconButton size="small">
-                    <SyncIcon fontSize="small" style={{ color: "#A6A6AA" }}/>
+                    <SyncIcon fontSize="small" style={{ color: "#A6A6AA" }} />
                   </IconButton>
                   <IconButton onClick={() => {}} size="small">
-                      <FavoriteBorderIcon fontSize="small" style={{ color: "#A6A6AA" }}/>
+                    <FavoriteBorderIcon
+                      fontSize="small"
+                      style={{ color: "#A6A6AA" }}
+                    />
                   </IconButton>
                   <IconButton size="small">
-                    <IosShareIcon fontSize="small" style={{ color: "#A6A6AA" }}/>
+                    <IosShareIcon
+                      fontSize="small"
+                      style={{ color: "#A6A6AA" }}
+                    />
                   </IconButton>
                 </Box>
               </Box>
             </Grid>
           </Grid>
-        </Box>     
-        </Box>     
-                
-   </>
+        </Box>
+      </Box>
+    </>
   );
 }

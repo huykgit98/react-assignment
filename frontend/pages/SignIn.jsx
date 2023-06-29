@@ -1,12 +1,14 @@
-import React from 'react';
+import React from "react";
 
 export default function SignIn({ wallet }) {
-  const signIn = () => { wallet.signIn() }
+  const signIn = () => {
+    wallet.signIn();
+  };
 
   return (
     <>
-  <p>Sign in page</p>
-  <button onClick={signIn}>Log in</button>
+      <p>Sign in page</p>
+      <button onClick={signIn}>Log in</button>
     </>
   );
 }

@@ -5,16 +5,13 @@ import React, { useEffect } from "react";
 import WhoToFollow from "./WhoToFollow";
 
 export default function RightSidebar() {
-
   return (
     <Box sx={{ height: "100%" }}>
-
       <Box paddingTop="10px">
         <Box
           width="100%"
           borderRadius="15px"
           position="relative"
-        
           sx={{
             background: "#1A202C",
           }}
@@ -24,7 +21,7 @@ export default function RightSidebar() {
             onChange={(e) => {}}
             type="text"
             inputProps={{
-              style: { padding: "10px", fontSize:"12px",  color: "#A6A6AA"},
+              style: { padding: "10px", fontSize: "12px", color: "#A6A6AA" },
             }}
             disableUnderline
             fullWidth
@@ -39,7 +36,6 @@ export default function RightSidebar() {
               />
             }
           />
-           
         </Box>
         <Box
           sx={{
@@ -49,12 +45,14 @@ export default function RightSidebar() {
             margin: "1rem 0",
           }}
         >
-          <Typography variant="h6" sx={{ fontWeight: "bold" , color: "#A6A6AA"}}>
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: "bold", color: "#A6A6AA" }}
+          >
             Who to follow
           </Typography>
-          <WhoToFollow/>
+          <WhoToFollow />
         </Box>
-        
       </Box>
     </Box>
   );
