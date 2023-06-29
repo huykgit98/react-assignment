@@ -1,7 +1,7 @@
 import { Search } from "@mui/icons-material";
-import { Input, Typography, Grid, CircularProgress } from "@mui/material";
+import { Input, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useEffect } from "react";
+import React from "react";
 import WhoToFollow from "./WhoToFollow";
 
 export default function RightSidebar() {

@@ -5,7 +5,7 @@ import GifBoxOutlined from "@mui/icons-material/GifBoxOutlined";
 import AddLocationAltOutlined from "@mui/icons-material/AddLocationAltOutlined";
 import RateReviewOutlined from "@mui/icons-material/RateReviewOutlined";
 
-import React, { useState } from "react";
+import React from "react";
 
 export default function AddPost() {
   const theme = useTheme();

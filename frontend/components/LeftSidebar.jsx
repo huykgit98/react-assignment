@@ -17,9 +17,6 @@ import {
 } from "@mui/material";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import LogoutIcon from "@mui/icons-material/Logout";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CustomizedSwitch from "../components/CustomSwitch";
 
 export default function LeftSidebar() {
